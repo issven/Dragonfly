@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.LineChart?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.project11.dragonfly_1.DynamicSystemSolvers">
+
+<padding>
+    <Insets topRightBottomLeft="10" />
+</padding>
+
+<center>
+    <LineChart fx:id="solutionGraph" BorderPane.alignment="CENTER">
+        <xAxis>
+            <NumberAxis label="t" side="BOTTOM" fx:id="xAxis" />
+        </xAxis>
+        <yAxis>
+            <NumberAxis fx:id="yAxis" label="y" side="LEFT" />
+        </yAxis>
+    </LineChart>
+</center>
+
+<top>
+    <HBox BorderPane.alignment="CENTER">
+
+        <children>
+            <VBox>
+                <children>
+                    <HBox>
+                        <children>
+                            <Label text="y' ( ">
+                           <HBox.margin>
+                              <Insets top="5.0" />
+                           </HBox.margin></Label>
+                        <TextField fx:id="freeVariableInput" promptText="x , y" />
+                        <Label text=" ) = ">
+                           <HBox.margin>
+                              <Insets top="5.0" />
+                           </HBox.margin></Label>
+                            <TextField fx:id="odeInput" promptText="x + 2 * y^2" />
+                        </children>
+                    </HBox>
+                  <Region prefHeight="5" HBox.hgrow="ALWAYS" />
+                    <HBox>
+                        <children>
+                        <TextField fx:id="dependentVariableInput" maxWidth="25.0" promptText=" y" />
+                            <Label text=" (0) = ">
+                           <HBox.margin>
+                              <Insets top="5.0" />
+                           </HBox.margin></Label>
+                            <TextField fx:id="y0Input" promptText="y0" />
+                        </children>
+                    </HBox>
+                  <Region prefHeight="5" HBox.hgrow="ALWAYS" />
+                    <Button onAction="#onClickAdd" text="Add System" />
+                </children>
+            </VBox>
+            <Region prefWidth="50" HBox.hgrow="ALWAYS" />
+            <Label text="Solver Method ">
+               <HBox.margin>
+                  <Insets top="5.0" />
+               </HBox.margin></Label>
+            <ComboBox fx:id="solverBox" promptText="Solver" />
+            <Region prefWidth="50" HBox.hgrow="ALWAYS" />
+            <VBox>
+                <children>
+                    <HBox>
+                        <children>
+                            <Label text="From ">
+                           <HBox.margin>
+                              <Insets top="5.0" />
+                           </HBox.margin></Label>
+                            <TextField fx:id="tStart" promptText="t0" />
+                        </children>
+                    </HBox>
+                  <Region prefHeight="5" HBox.hgrow="ALWAYS" />
+                    <HBox>
+                        <children>
+                            <Label text="To     ">
+                           <HBox.margin>
+                              <Insets top="5.0" />
+                           </HBox.margin></Label>
+                            <TextField fx:id="tEnd" promptText="t" />
+                        </children>
+                    </HBox>
+                </children>
+            </VBox>
+        </children>
+    </HBox>
+</top>
+<right>
+    <VBox BorderPane.alignment="CENTER">
+        <children>
+            <Region maxHeight="20.0" prefHeight="50.0" VBox.vgrow="ALWAYS" />
+            <HBox>
+                <children>
+                    <Label text="Step Size ">
+                     <HBox.margin>
+                        <Insets top="5.0" />
+                     </HBox.margin></Label>
+                    <TextField fx:id="stepField" promptText="h" />
+                </children>
+            </HBox>
+            <HBox />
+            <Region maxHeight="20.0" prefHeight="50.0" />
+            <HBox>
+               <children>
+                  <Button onAction="#onCLickSolve" text="Solve" />
+                  <Region maxWidth="20.0" prefWidth="50" HBox.hgrow="ALWAYS" />
+                  <Button onAction="#onClickResetValues" text="Reset Values" />
+               </children>
+            </HBox>
+            <Region maxHeight="20.0" prefHeight="50" VBox.vgrow="ALWAYS" />
+            <Button onAction="#onClickClear" text="Clear" />
+            <Region minHeight="50.0" />
+        </children>
+    </VBox>
+</right>
+<bottom>
+    <TextArea fx:id="textArea" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+</bottom>
+</BorderPane>
