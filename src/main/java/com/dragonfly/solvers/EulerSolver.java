@@ -1,10 +1,16 @@
 package com.dragonfly.solvers;
 
+import java.util.HashMap;
+
 public class EulerSolver implements Solver{
 
-    public static double[] step(double[] y_n, double stepSize) {
+    @Override
+    public double[] step(double[] y_n, double stepSize) {
+        return new double[0];
+    }
 
-        return new double[3];
-
+    @Override
+    public HashMap<String, Double[]> solve() {
+        return null;
     }
 }
