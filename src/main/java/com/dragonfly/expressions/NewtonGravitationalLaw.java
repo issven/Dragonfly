@@ -30,7 +30,7 @@ public class NewtonGravitationalLaw implements com.dragonfly.expressions.Express
         double rMagnitude = Math.sqrt(Math.pow(r[0], 2) + Math.pow(r[1], 2) + Math.pow(r[2], 2));
 
         for (int i = 0; i < 3; i++){
-            gravitationForce[i] = (-GRAVITATIONAL_CONSTANT * byObjectA.getMass() * onObjectB.getMass() * r[i])/Math.pow(rMagnitude, 3);
+            gravitationForce[i] = (-GRAVITATIONAL_CONSTANT * byObjectA.getMass() * onObjectB.getMass() * r[i])/Math.abs(Math.pow(rMagnitude, 3));
         }
 
         return gravitationForce;
