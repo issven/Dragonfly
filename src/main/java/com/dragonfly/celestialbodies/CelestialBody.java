@@ -1,10 +1,13 @@
 package com.dragonfly.celestialbodies;
 
+import java.util.Arrays;
+
 public abstract class CelestialBody {
 
     protected double mass; // kg
     protected double[] position; // km
     protected double[] velocity; // km/s
+    protected double[] acceleration;
 
     public CelestialBody(){
         mass = Double.NaN;
@@ -30,12 +33,29 @@ public abstract class CelestialBody {
         return velocity;
     }
 
+    public double[] getAcceleration() {
+        return acceleration;
+    }
+
+    public void setAcceleration(double[] acceleration) {
+        this.acceleration = acceleration;
+    }
+
     public void setVelocity(double[] velocity) {
         this.velocity = velocity;
     }
 
     public double getMass() {
         return mass;
+    }
+
+    public CelestialBody getDeepCopy() {
+        return null;
+    }
+
+    @Override
+    public String toString(){
+        return getClass().getSimpleName() + ": position" + Arrays.toString(position) + ", velocity" + Arrays.toString(velocity);
     }
 
 }
